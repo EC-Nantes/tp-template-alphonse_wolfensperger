@@ -21,7 +21,7 @@ class carre : public rectangle<T> {
  
 protected:
    //Les points du Carre
-   pointT<T> p;
+   //pointT<T> p;
 
 public:
     carre(pointT<T> p, T c);

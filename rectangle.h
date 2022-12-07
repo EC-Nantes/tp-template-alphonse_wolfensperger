@@ -16,7 +16,7 @@ template <typename T>
 std::ostream& operator<<(std::ostream &, rectangle<T> const&);
 
 template <typename T>
-class rectangle : virtual public forme<T>{
+class rectangle : public forme<T>{
  
 protected:
    //Les points du Rectangle
@@ -24,8 +24,8 @@ protected:
    T h;
 
 public:
-    rectangle(forme<T> p, T l, T h);
-    forme<T> getPoint() const;
+    rectangle(pointT<T> p, T l, T h);
+    pointT<T> getPoint() const;
     T getL() const;
     T getH() const;
     T surface() const;
@@ -34,10 +34,10 @@ public:
 };
 
 template <typename T>
-rectangle<T>::rectangle(forme<T> p, T l, T h){
-   this->p = p; //attention copie superficielle
-   this->h = h;
-   this->l = l;
+rectangle<T>::rectangle(pointT<T> p, T l, T h){
+  this->p = p;
+  this->h = h;
+  this->l = l;
 }
 
 template <typename T>
@@ -51,7 +51,7 @@ T rectangle<T>::getH() const{
 }
 
 template <typename T> 
-forme<T> rectangle<T>::getPoint() const{
+pointT<T> rectangle<T>::getPoint() const{
    return this->p;
 }
 

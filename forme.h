@@ -24,7 +24,10 @@ class forme {
   //Méthodes
   public:
     forme(pointT<T> p);
+
     forme<T> getPoint() const;
+
+    void setPoint(T x, T y);
 
     virtual T surface() = 0;
     virtual T perimetre() = 0;
@@ -35,19 +38,14 @@ class forme {
 //Définition des différentes méthodes
 template<typename T> 
 forme<T>::forme(pointT<T> p){
-    this->p = p;
-
- }
-
-template<typename T> 
-T forme<T>::perimetre(){
-    
- }
+  this->p = p;
+}
 
 template<typename T> 
-T forme<T>::surface(){
-    
- }
+T forme<T>::perimetre(){}
+
+template<typename T> 
+T forme<T>::surface(){}
 
 
 //Surcharge de l'opérateur cout pour afficher directement le centre 
