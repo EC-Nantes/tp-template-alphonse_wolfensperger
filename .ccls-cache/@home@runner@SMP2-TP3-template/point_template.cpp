@@ -20,9 +20,5 @@ using namespace std;
 
 #include "point_template.h"
 
-/*Point::Point(){
-  this->abcisse_ = 0;
-  this->ordonne_ = 0;
-}*/
 
 
