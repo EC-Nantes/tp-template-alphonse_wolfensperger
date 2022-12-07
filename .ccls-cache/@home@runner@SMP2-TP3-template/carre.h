@@ -29,8 +29,8 @@ public:
 
     T getC() const;
 
-    T surface();
-    T perimetre();
+    T surface() const;
+    T perimetre() const;
     friend std::ostream& operator<< <T>(std::ostream &, carre const&);
     
 };
@@ -53,12 +53,14 @@ pointT<T> carre<T>::getPoint() const{
 }
 
 template <typename T> 
-T pointT<T>::surface() const{
+T carre<T>::surface() const{
   return ((this->l)^2);
 }
 
 template <typename T> 
-T perimetre();
+T carre<T>::perimetre() const{
+  return ((this->l)*4);
+}
 
 template <typename T>
 std::ostream& operator<<(std::ostream &o, carre<T> const &R)

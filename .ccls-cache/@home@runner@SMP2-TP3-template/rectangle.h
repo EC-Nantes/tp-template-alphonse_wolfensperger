@@ -28,8 +28,9 @@ public:
     forme<T> getPoint() const;
     T getL() const;
     T getH() const;
-
-   friend std::ostream& operator<< <T>(std::ostream &, rectangle const&);    
+    T surface() const;
+    T perimetre() const ;
+    friend std::ostream& operator<< <T>(std::ostream &, rectangle const&);    
 };
 
 template <typename T>
@@ -52,6 +53,16 @@ T rectangle<T>::getH() const{
 template <typename T> 
 forme<T> rectangle<T>::getPoint() const{
    return this->p;
+}
+
+template<typename T> 
+T rectangle<T>::surface() const{
+  return (this->l*this->h);
+}
+
+template<typename T> 
+T rectangle<T>::perimetre() const{
+  return (this->l*2+this->h*2);
 }
 
 template <typename T>
