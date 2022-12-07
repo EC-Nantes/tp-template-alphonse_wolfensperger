@@ -1,5 +1,5 @@
 //
-//  Vehicule.hpp
+//  point_template.h
 //  TP3_Template
 //
 //  Created by Frederic ALPHONSE on 28/11/2022.
@@ -12,7 +12,6 @@ using namespace std;
 
 template <typename T>
 class pointT;
-
 
 //Surcharge de l'opérateur
 template <typename T>

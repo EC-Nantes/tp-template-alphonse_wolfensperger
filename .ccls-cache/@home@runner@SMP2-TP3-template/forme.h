@@ -25,8 +25,8 @@ class forme {
   public:
     forme(pointT<T> p);
     forme<T> getPoint() const;
-    virtual void surface();
-    virtual void perimetre();
+    virtual void surface() = 0;
+    virtual void perimetre() = 0;
     friend std::ostream& operator<< <T>(std::ostream &, forme const&);
    //std::ostream& operator<<(std::ostream &, pointT<T> const &P);
 };
