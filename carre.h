@@ -6,61 +6,64 @@
 #include <stdexcept>
 #include <iostream>
 
-#include "forme.h"
+#include "rectangle.h"
 
 using namespace std;
-template <typename T>
-class rectangle;
 
 template <typename T>
-std::ostream& operator<<(std::ostream &, rectangle<T> const&);
+class carre;
 
 template <typename T>
-class rectangle{
+std::ostream& operator<<(std::ostream &, carre<T> const&);
+
+template <typename T>
+class carre : public rectangle<T> {
  
 protected:
-   
-   //Les points du Rectangle
-   pointT<T> p ;
-   T l;
-   T h;
+   //Les points du Carre
+   pointT<T> p;
 
 public:
-    rectangle(pointT<T> p, T l, T h);
+    carre(pointT<T> p, T c);
     pointT<T> getPoint() const;
-    T getL() const;
-    T getH() const;
 
-   friend std::ostream& operator<< <T>(std::ostream &, rectangle const&);
+    T getC() const;
+
+    T surface();
+    T perimetre();
+    friend std::ostream& operator<< <T>(std::ostream &, carre const&);
     
 };
 
 template <typename T>
-rectangle<T>::rectangle(pointT<T> p, T l, T h){
+carre<T>::carre(pointT<T> p, T c){
    this->p = p; //attention copie superficielle
-   this->h = h;
-   this->l = l;
+   this->h = c;
+   this->l = c;
 }
 
 template <typename T>
-T rectangle<T>::getL() const{
+T carre<T>::getC() const{
    return this->l;
 }
 
-template <typename T>
-T rectangle<T>::getH() const{
-   return this->h;
-}
-
 template <typename T> 
-pointT<T> rectangle<T>::getPoint() const{
+pointT<T> carre<T>::getPoint() const{
    return this->p;
 }
 
+template <typename T> 
+T pointT<T>::surface() const{
+  return ((this->l)^2);
+}
+
+template <typename T> 
+T perimetre();
+
 template <typename T>
-std::ostream& operator<<(std::ostream &o, rectangle<T> const &R)
+std::ostream& operator<<(std::ostream &o, carre<T> const &R)
 {
-   o<<"("<<R.getPoint().getX()<<","<<R.getPoint().getY()<<"), "<<R.getH()<<", "<<R.getL()<<std::endl;
+   o<<"("<<R.getPoint().getX()<<","<<R.getPoint().getY()<<"), "<<R.getC()<<std::endl;
 
   return o;
 

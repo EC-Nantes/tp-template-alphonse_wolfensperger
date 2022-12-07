@@ -10,33 +10,30 @@
 
 using namespace std;
 template <typename T>
-class rectangle;
+class rectangle ;
 
 template <typename T>
 std::ostream& operator<<(std::ostream &, rectangle<T> const&);
 
 template <typename T>
-class rectangle{
+class rectangle : virtual public forme<T>{
  
 protected:
-   
    //Les points du Rectangle
-   pointT<T> p ;
    T l;
    T h;
 
 public:
-    rectangle(pointT<T> p, T l, T h);
-    pointT<T> getPoint() const;
+    rectangle(forme<T> p, T l, T h);
+    forme<T> getPoint() const;
     T getL() const;
     T getH() const;
 
-   friend std::ostream& operator<< <T>(std::ostream &, rectangle const&);
-    
+   friend std::ostream& operator<< <T>(std::ostream &, rectangle const&);    
 };
 
 template <typename T>
-rectangle<T>::rectangle(pointT<T> p, T l, T h){
+rectangle<T>::rectangle(forme<T> p, T l, T h){
    this->p = p; //attention copie superficielle
    this->h = h;
    this->l = l;
@@ -53,7 +50,7 @@ T rectangle<T>::getH() const{
 }
 
 template <typename T> 
-pointT<T> rectangle<T>::getPoint() const{
+forme<T> rectangle<T>::getPoint() const{
    return this->p;
 }
 
