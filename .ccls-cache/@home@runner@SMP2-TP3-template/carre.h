@@ -3,6 +3,9 @@
 //  TP3_Template
 //
 //  Created by Frederic ALPHONSE on 28/11/2022.
+#ifndef CARRE_H
+#define CARRE_H
+
 #include <stdexcept>
 #include <iostream>
 
@@ -10,63 +13,34 @@
 
 using namespace std;
 
-template <typename T>
+template <typename T, typename U>
 class carre;
 
-template <typename T>
-std::ostream& operator<<(std::ostream &, carre<T> const&);
+template <typename T, typename U>
+std::ostream& operator<<(std::ostream &, carre<T,U> const&);
 
-template <typename T>
-class carre : public rectangle<T> {
+template <typename T, typename U>
+class carre : public rectangle<T,U> {
  
 protected:
-   //Les points du Carre
-   //pointT<T> p;
+
 
 public:
     carre(pointT<T> p, T c);
-    pointT<T> getPoint() const;
-
-    T getC() const;
-
-    T surface() const;
-    T perimetre() const;
     friend std::ostream& operator<< <T>(std::ostream &, carre const&);
     
 };
 
-template <typename T>
-carre<T>::carre(pointT<T> p, T c){
-   this->p = p; //attention copie superficielle
-   this->h = c;
-   this->l = c;
-}
+template <typename T, typename U>
+carre<T,U>::carre(pointT<T> p, T c):rectangle<T, U>(p,c,c){}
 
-template <typename T>
-T carre<T>::getC() const{
-   return this->l;
-}
-
-template <typename T> 
-pointT<T> carre<T>::getPoint() const{
-   return this->p;
-}
-
-template <typename T> 
-T carre<T>::surface() const{
-  return ((this->l)^2);
-}
-
-template <typename T> 
-T carre<T>::perimetre() const{
-  return ((this->l)*4);
-}
-
-template <typename T>
-std::ostream& operator<<(std::ostream &o, carre<T> const &R)
+template <typename T, typename U>
+std::ostream& operator<<(std::ostream &o, carre<T,U> const &R)
 {
-   o<<"("<<R.getPoint().getX()<<","<<R.getPoint().getY()<<"), "<<R.getC()<<std::endl;
+   o<<"Centre du carre"<<R.p_<<"De cote = "<<R.l_<<std::endl;
 
   return o;
 
 }
+
+#endif

@@ -18,7 +18,7 @@
 
 using namespace std;
 
-#include "point_template.h"
+#include "point.h"
 
 
 

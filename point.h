@@ -4,6 +4,9 @@
 //
 //  Created by Frederic ALPHONSE on 28/11/2022.
 //
+//
+#ifndef POINT_H
+#define POINT_H
 
 #include <stdexcept>
 #include <iostream>
@@ -22,14 +25,14 @@ template<typename T>
 class pointT {
   //attributs
   protected:
-    T x;
-    T y;
+    T x_;
+    T y_;
 
   public:
     //Méthodes :
     //Constructeurs :
-    pointT(T x,T y);
-    pointT(pointT<T> const &P);
+    pointT(T x = 0,T y = 0);
+    pointT(pointT<T> const &p);
 
     //Accesseurs en lecture :
     T getX() const;
@@ -40,58 +43,52 @@ class pointT {
     void setY(T x);
 
     //Autres méthodes :
-    T norm2() const;
     void translater(T x,T y);
     friend std::ostream& operator<< <T>(std::ostream &, pointT const&);
 };
+
+
 
 //Définition des différentes méthodes :
 //Constructeurs :
 template<typename T> 
 pointT<T>::pointT(T x,T y){
-    this->x = x;
-    this->y = y;
+    this->x_ = x;
+    this->y_ = y;
  }
 
 template<typename T> 
-pointT<T>::pointT(pointT<T> const &P){
-    this->x = P.x;
-    this->y = P.y;
+pointT<T>::pointT(pointT<T> const &p){
+    this->x_ = p.x_;
+    this->y_ = p.y_;
  }
 
 //Accesseurs en lecture :
 template<typename T> 
 T pointT<T>::getX() const{
-  return this->x;
+  return this->x_;
 }
 
 template<typename T> 
 T pointT<T>::getY() const{
-  return this->y;
+  return this->y_;
 }
 
 //Accesseurs en ecriture :
 template<typename T> 
 void pointT<T>::setX(T x){
-  this->x = x;
+  this->x_ = x;
 }
 
 template<typename T> 
 void pointT<T>::setY(T y){
-  this->y = y;
-}
-
-//Autres méthodes :
-//fonction norm1 (bonus)
-template<typename T>
-T pointT<T>::norm2() const{
-   return x*x+y*y;
+  this->y_ = y;
 }
 
 template<typename T>
 void pointT<T>::translater(T x, T y){
-   this->x += x;
-   this->y += y;
+   this->x_ += x;
+   this->y_ += y;
 }
 
 //Surcharge de l'opérateur cout pour afficher directement les caractéristique du point
@@ -101,3 +98,6 @@ std::ostream& operator << (std::ostream &o, pointT<T> const &P)
   o<<"("<<P.getX()<<","<<P.getY()<<")"<<endl;
   return o;
 }
+
+#endif
+//POINT_TEMPLATE_H
