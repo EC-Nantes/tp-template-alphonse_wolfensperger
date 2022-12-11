@@ -55,7 +55,7 @@ U rectangle<T,U>::perimetre() {
 template <typename T, typename U>
 std::ostream& operator<<(std::ostream &o, rectangle<T,U> const &R)
 {
-   o<<"largeur"<<R.l_<<"hauteur"<<R.h_<<"point, "<<R.p_<<std::endl;
+   o<<"largeur : "<<R.l_<<"  hauteur : "<<R.h_<<"  centre :  "<<R.p_<<std::endl;
 
   return o;
 
